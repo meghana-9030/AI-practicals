@@ -1,0 +1,50 @@
+Develop a mini AI application such as text classification, chatbot prototype or perception
+demo and report on ethics and explainability considerations.
+CODE:
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+messages = [
+  "Win a free prize now",
+  "Claim your free reward",
+  "Congratulations you won cash",
+  "Get a special offer today",
+  "Please attend the meeting tomorrow",
+  "Can we meet after class",
+  "Your assignment is due Friday",
+  "Please send me the notes"
+]
+labels = [
+  "Spam",
+  "Spam",
+  "Spam",
+  "Spam",
+  "Not Spam",
+  "Not Spam",
+  "Not Spam",
+  "Not Spam"
+]
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(messages)
+model = MultinomialNB()
+model.fit(X, labels)
+new_message = ["Win cash today"]
+new_X = vectorizer.transform(new_message)
+prediction = model.predict(new_X)
+print("Message:", new_message[0])
+print("Prediction:", prediction[0])
+user_message = input("Enter a message: ")
+user_X = vectorizer.transform([user_message])
+prediction = model.predict(user_X)
+print("Prediction:", prediction[0])
+
+OUTPUT:
+Message:   Win cash today
+Prediction: Spam
+Enter a message: Please send me notes
+Prediction: Not spam
+CONCLUSION:
+Thus, the spam message detection system was successfully implemented in Python using the
+Multinomial Naive Bayes algorithm. The program converts text messages into numerical features
+using CountVectorizer and classifies them as spam or not spam. This practical demonstrates the
+application of Natural Language Processing (NLP), text classification, and supervised machine
+learning in Artificial Intelligence.
