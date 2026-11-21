@@ -1,0 +1,65 @@
+Implement value iteration or policy-based decision making in a grid-world or similar
+sequential decision-making environment.
+CODE:
+transitions = {
+    'A': {'Right': 'B', 'Down': 'C'},
+    'B': {'Left': 'A', 'Down': 'G'},
+    'C': {'Up': 'A', 'Right': 'G'},
+    'G': {}
+}
+rewards = {
+    'A': -1,
+    'B': -1,
+    'C': -1,
+    'G': 10
+}
+gamma = 0.9
+values = {
+    'A': 0,
+    'B': 0,
+    'C': 0,
+    'G': 0
+}
+print(values)
+foriinrange(5):
+  new_values = values.copy()
+  forstate in ['A', 'B', 'C']:
+    possible_values = []
+    foraction, next_state in transitions[state].items():
+        value = rewards[next_state] + gamma * values[next_state]
+        possible_values.append(value)
+  new_values[state] = max(possible_values)
+values= new_values
+print("Final values:")
+print(values)
+policy={}
+forstatein ['A', 'B', 'C']:
+  best_action = None
+  best_value = -100
+  foraction, next_state in transitions[state].items():
+    value = rewards[next_state] + gamma * values[next_state]
+  ifvalue > best_value:
+      best_value = value
+      best_action = action
+  policy[state] = best_action
+print("Best policy:")
+print(policy)
+forstate, action in policy.items():
+  print("From", state, "choose", action)
+OUTPUT:
+{'A': 0.'B':0.'C':0,'G':0}
+Final Values:
+{'A':8.0,'B':10.0,'C':10.0,'G':0}
+Best Policy:
+{'A':'Right', 'B':'Down','C':'Right'}
+From A choose Right
+From B choose Down
+From C choose Right
+
+CONCLUSION:
+Thus, the Value Iteration algorithm was successfully implemented in Python to determine the optimal
+values and policy for a Grid World environment. The program iteratively updates state values based
+on rewards, transitions, and a discount factor to identify the best action for each state. This practical
+demonstrates reinforcement learning, Markov Decision Processes (MDPs), and optimal policy
+determination in Artificial Intelligence.
+
