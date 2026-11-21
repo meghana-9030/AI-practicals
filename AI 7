@@ -1,0 +1,45 @@
+Model a simple Bayesian network or probabilistic classifier for prediction or diagnosis
+and perform inference using a suitable Python library.
+#code
+fromsklearn.naive_bayes import BernoulliNB
+X = [
+  [1,1,1],
+  [1,1,0],
+  [1,0,1],
+  [0,1,0],
+  [0,1,1],
+  [0,0,0]
+]
+y = [
+  'Flu',
+  'Flu',
+  'Flu',
+  'Cold',
+  'Cold',
+  'Cold'
+]
+model=BernoulliNB()
+model.fit(X,y)
+patient = [[1, 1, 1]]
+prediction = model.predict(patient)
+print("Predicted diagnosis:", prediction[0])
+probabilities = model.predict_proba(patient)
+fordiagnosis, probability in zip(model.classes_, probabilities[0]):
+ print(diagnosis, "=", round(probability, 2))
+patient2 = [[0, 1, 0]]
+prediction2 = model.predict(patient2)
+print("Predicted diagnosis:", prediction2[0])
+
+#OUTPUT
+Predicted diagnosis: Flu
+Cold: 0.14
+Flu : 0.86
+Predicted diagnosis: Cold
+
+#Conclusion:
+Thus, the Bernoulli Naive Bayes classification model was successfully implemented using Python
+and the Scikit-learn library. The model was trained using a dataset containing symptoms and
+corresponding diagnoses, and it predicted possible diagnoses for new patient inputs. The practical
+demonstrates the working of Naive Bayes classification, supervised learning, and prediction
+probabilities in Artificial Intelligence.
+
