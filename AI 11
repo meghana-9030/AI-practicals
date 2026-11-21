@@ -1,0 +1,33 @@
+Represent a real-world problem using propositional logic or firstorder logic and perform
+logical inference to derive conclusions using an AI reasoning approach
+CODE:
+facts = {"raining"}
+print("Initial facts:", facts)
+rules = {
+  "raining": "road_wet",
+  "road_wet": "drive_carefully",
+  "drive_carefully": "reduce_speed"
+}
+changed = True
+whilechanged:
+  changed = False
+  forcondition, conclusion in rules.items():
+   ifcondition in facts and conclusion not in facts:
+      facts.add(conclusion)
+      changed = True
+print("Facts after inference:")
+forfact in facts:
+  print(fact)
+OUTPUT:
+Initial facts:{'raing'}
+facts after raining
+raining
+reduce_speed
+drive_carefully
+road_wet
+
+CONCLUSION:
+Thus, the propositional logic and logical inference system was successfully implemented in Python
+using facts and predefined inference rules. The program applies these rules repeatedly to derive new
+facts from existing facts until no further conclusions can be obtained. This practical demonstrates
+knowledge representation, rule-based reasoning, and logical inference in Artificial Intelligence.
